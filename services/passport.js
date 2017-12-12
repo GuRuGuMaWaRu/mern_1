@@ -10,6 +10,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
+  // adds model instance to req object as req.user
   User.findById(id).then(user => {
     done(null, user);
   });
