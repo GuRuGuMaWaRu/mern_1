@@ -15,7 +15,7 @@ app.use(
     maxAge: 30 * 24 * 60 * 60 * 1000,
     keys: [keys.cookieKey]
   })
-);
+); // puts cookie data into req.session
 app.use(passport.initialize()); // initialize passport
 app.use(passport.session()); // initialize cookies with passport
 

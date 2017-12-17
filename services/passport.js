@@ -11,7 +11,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  // adds model instance to req object as req.user
+  // gets cookie data out of req.session (inside passport.id)
   User.findById(id).then(user => {
     done(null, user);
   });
