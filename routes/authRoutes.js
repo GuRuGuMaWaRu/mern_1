@@ -25,7 +25,7 @@ module.exports = app => {
   // other
   app.get("/api/logout", (req, res) => {
     req.logout();
-    res.send(req.user); // will be undefined, lets user know that logout is successful
+    res.redirect("/");
   });
 
   app.get("/api/current_user", (req, res) => {
