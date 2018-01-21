@@ -20,6 +20,7 @@ app.use(passport.initialize()); // initialize passport
 app.use(passport.session()); // initialize cookies with passport
 
 require("./routes/authRoutes")(app);
+require("./routes/billingRoutes")(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
