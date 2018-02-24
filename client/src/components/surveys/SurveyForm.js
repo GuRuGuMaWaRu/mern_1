@@ -7,19 +7,23 @@ import SurveyField from "./SurveyField";
 const FIELDS = [
   {
     label: "Survey Title",
-    name: "title"
+    name: "title",
+    noValueError: "You must provide a title"
   },
   {
     label: "Subject Line",
-    name: "subject"
+    name: "subject",
+    noValueError: "You must provide a subject"
   },
   {
     label: "Email Body",
-    name: "body"
+    name: "body",
+    noValueError: "You must provide a body"
   },
   {
     label: "Recipient List",
-    name: "emails"
+    name: "emails",
+    noValueError: "You must provide at least one email address"
   }
 ];
 
@@ -59,9 +63,11 @@ class SurveyForm extends Component {
 function validate(values) {
   const errors = {};
 
-  if (!values.title) {
-    errors.title = "You must provide a title";
-  }
+  _.each(FIELDS, ({ name, noValueError }) => {
+    if (!values[name]) {
+      errors[name] = noValueError;
+    }
+  });
 
   return errors;
 }
