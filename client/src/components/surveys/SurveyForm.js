@@ -11,7 +11,7 @@ class SurveyForm extends Component {
     return _.map(formFields, ({ label, name }) => {
       return (
         <Field
-          key={label}
+          key={name}
           component={SurveyField}
           type="text"
           label={label}
@@ -29,9 +29,9 @@ class SurveyForm extends Component {
           <Link to="/surveys" className="red btn-flat white-text">
             Cancel
           </Link>
-          <button className="teal btn-flat right white-text" type="submit">
+          <button type="submit" className="teal btn-flat right white-text">
             Next
-            <i className="material-icons right">done</i>
+            <i className="material-icons right">arrow_forward</i>
           </button>
         </form>
       </div>
@@ -42,7 +42,7 @@ class SurveyForm extends Component {
 function validate(values) {
   const errors = {};
 
-  errors.recipients = validateEmails(values.emails || "");
+  errors.recipients = validateEmails(values.recipients || "");
 
   _.each(formFields, ({ name, noValueError }) => {
     if (!values[name]) {
